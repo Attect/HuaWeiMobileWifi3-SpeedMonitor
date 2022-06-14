@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HuaWeiMobileWifi3-SpeedMonitor-jvm-1.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="HuaWeiMobileWifi3-SpeedMonitor-jvm-1.0-SNAPSHOT.jar" />
+  </artifact>
+</component>
