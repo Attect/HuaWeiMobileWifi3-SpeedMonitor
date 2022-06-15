@@ -1,6 +1,5 @@
 import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("multiplatform")
@@ -24,9 +23,13 @@ kotlin {
         withJava()
     }
     sourceSets {
+        val ktor_version: String by project
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+//                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.2")
+                implementation("io.ktor:ktor-client-core:$ktor_version")
+                implementation("io.ktor:ktor-client-cio:$ktor_version")
             }
         }
         val jvmTest by getting
