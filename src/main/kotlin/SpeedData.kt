@@ -43,8 +43,8 @@ object SpeedData : CoroutineScope {
     var showTraffic by mutableStateOf(true)
 
     fun startPullData() = launch {
+        val client = HttpClient(CIO)
         while (true) {
-            val client = HttpClient(CIO)
             val response: HttpResponse = client.get("http://192.168.8.1/api/monitoring/traffic-statistics")
             updateFromString(response.bodyAsText())
             delay(1000L)
