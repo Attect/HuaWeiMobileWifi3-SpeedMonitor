@@ -5,16 +5,14 @@ import io.ktor.client.*
 import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
-
 object SpeedData : CoroutineScope {
 
+    private val job = Job()
+
     override val coroutineContext: CoroutineContext
-        get() = Dispatchers.IO
+        get() = Dispatchers.IO + job
 
 
     private const val CURRENT_CONNECT_TIME_TAG = "<CurrentConnectTime>"
