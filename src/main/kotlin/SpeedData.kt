@@ -45,8 +45,10 @@ object SpeedData : CoroutineScope {
     fun startPullData() = launch {
         val client = HttpClient(CIO)
         while (true) {
-            val response: HttpResponse = client.get("http://192.168.8.1/api/monitoring/traffic-statistics")
-            updateFromString(response.bodyAsText())
+            kotlin.runCatching {
+                val response: HttpResponse = client.get("http://192.168.8.1/api/monitoring/traffic-statistics")
+                updateFromString(response.bodyAsText())
+            }.exceptionOrNull()?.printStackTrace()
             delay(1000L)
         }
 
